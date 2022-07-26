@@ -13,6 +13,3 @@ The code is based on [.Net 5](https://docs.microsoft.com/en-us/dotnet/core/whats
 
 ## Tests
 > dotnet test
-
-## Run
-> dotnet run
