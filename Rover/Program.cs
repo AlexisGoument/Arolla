@@ -59,13 +59,19 @@ namespace Rover
 
         public void Move(MovingDirection d)
         {
-            switch (d)
+            switch (Direction)
             {
-                case MovingDirection.FRONTWARD:
-                    Y += 1;
+                case FacingDirection.NORTH:
+                    Y += (int)d;
                     break;
-                case MovingDirection.BACKWARD:
-                    Y -= 1;
+                case FacingDirection.SOUTH:
+                    Y -= (int)d;
+                    break;
+                case FacingDirection.EAST:
+                    X += (int)d;
+                    break;
+                case FacingDirection.WEST:
+                    X -= (int)d;
                     break;
             }
         }
@@ -103,8 +109,8 @@ namespace Rover
     }
 
     public enum MovingDirection {
-        FRONTWARD,
-        BACKWARD
+        FRONTWARD = 1,
+        BACKWARD = -1
     }
 
     public enum TurningDirection {
