@@ -43,20 +43,6 @@ namespace Rover
                 Direction == r.Direction;
         }
 
-        //Finalement je suis parti sur FluentAssertions pour avoir des retours plus sympa
-        // public override int GetHashCode()
-        // {
-        //     return HashCode.Combine(X, Y, Direction);
-        // }
-
-        // public override bool Equals(object? obj)
-        // {
-        //     return obj is Rover r &&
-        //         X == r.X &&
-        //         Y == r.Y &&
-        //         Direction == r.Direction;
-        // }
-
         public void Move(MovingDirection d)
         {
             switch (Direction)
