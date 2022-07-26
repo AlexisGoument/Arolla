@@ -34,6 +34,20 @@ namespace Rover.Tests
             rover.Should().BeEquivalentTo(new Rover(0, -1, FacingDirection.NORTH));
         }
 
+        [Test]
+        public void TestRover_TurnLeft()
+        {
+            rover.Turn(TurningDirection.LEFT);
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.WEST));
+        }
+
+        [Test]
+        public void TestRover_TurnRight()
+        {
+            rover.Turn(TurningDirection.RIGHT);
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.EAST));
+        }
+
         [TestCase(FacingDirection.NORTH, TurningDirection.LEFT, FacingDirection.WEST)]
         [TestCase(FacingDirection.WEST, TurningDirection.LEFT, FacingDirection.SOUTH)]
         [TestCase(FacingDirection.SOUTH, TurningDirection.LEFT, FacingDirection.EAST)]
