@@ -17,35 +17,35 @@ namespace Rover.Tests
         [Test]
         public void TestRover_InitialPosition()
         {
-            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.N));
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.North));
         }
 
         [Test]
         public void TestRover_MoveForward()
         {
             rover.Move(MovingDirection.FRONTWARD);
-            rover.Should().BeEquivalentTo(new Rover(0, 1, FacingDirection.N));
+            rover.Should().BeEquivalentTo(new Rover(0, 1, FacingDirection.North));
         }
 
         [Test]
         public void TestRover_MoveBackward()
         {
             rover.Move(MovingDirection.BACKWARD);
-            rover.Should().BeEquivalentTo(new Rover(0, -1, FacingDirection.N));
+            rover.Should().BeEquivalentTo(new Rover(0, -1, FacingDirection.North));
         }
 
         [Test]
         public void TestRover_TurnLeft()
         {
             rover.Turn(TurningDirection.LEFT);
-            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.W));
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.West));
         }
 
         [Test]
         public void TestRover_TurnRight()
         {
             rover.Turn(TurningDirection.RIGHT);
-            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.E));
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.East));
         }
 
         [Test]
@@ -55,7 +55,7 @@ namespace Rover.Tests
             rover.Turn(TurningDirection.LEFT);
             rover.Move(MovingDirection.FRONTWARD);
             rover.Move(MovingDirection.BACKWARD);
-            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.N));
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.North));
         }
 
         [Test]
@@ -66,7 +66,22 @@ namespace Rover.Tests
             rover.Turn(TurningDirection.RIGHT);
             rover.Move(MovingDirection.FRONTWARD);
 
-            rover.Should().BeEquivalentTo(new Rover(1, 2, FacingDirection.E));
+            rover.Should().BeEquivalentTo(new Rover(1, 2, FacingDirection.East));
+        }
+
+        [Test]
+        public void TestRover_TurnLeft_WhenFacingNorth()
+        {
+            rover.Turn(TurningDirection.LEFT);
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.West));
+        }
+
+        [Test]
+        public void TestRover_TurnRight_WhenFacingWest()
+        {
+            rover.Direction = FacingDirection.West;
+            rover.Turn(TurningDirection.RIGHT);
+            rover.Should().BeEquivalentTo(new Rover(0, 0, FacingDirection.North));
         }
     }
 }

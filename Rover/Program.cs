@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Rover
 {
@@ -27,7 +28,7 @@ namespace Rover
         public int Y { get; set; }
         public FacingDirection Direction { get; set; }
 
-        public Rover(int x = 0, int y = 0, FacingDirection d = FacingDirection.N)
+        public Rover(int x = 0, int y = 0, FacingDirection d = FacingDirection.North)
         {
             X = x;
             Y = y;
@@ -58,11 +59,46 @@ namespace Rover
 
         public void Move(MovingDirection d)
         {
-            throw new NotImplementedException();
+            switch (d)
+            {
+                case MovingDirection.FRONTWARD:
+                    Y += 1;
+                    break;
+                case MovingDirection.BACKWARD:
+                    Y -= 1;
+                    break;
+            }
         }
 
         public void Turn(TurningDirection d) {
-            throw new NotImplementedException();
+            switch (d)
+            {
+                case TurningDirection.LEFT:
+                    TurnLeft();
+                    break;
+                case TurningDirection.RIGHT:
+                    TurnRight();
+                    break;
+            }
+        }
+
+        private void TurnLeft() {
+            var d = ((int)Direction - 1);
+            
+            if (d < 0)
+                d = (int)Enum.GetValues(typeof(FacingDirection)).Cast<FacingDirection>().Max();
+                
+            Direction = (FacingDirection)d;
+        }
+
+        private void TurnRight() {
+            var d = ((int)Direction + 1);
+            var directions = Enum.GetValues(typeof(FacingDirection)).Cast<FacingDirection>();
+
+            if (d > (int)directions.Max())
+                d = (int)directions.Min();
+                
+            Direction = (FacingDirection)d;
         }
     }
 
@@ -77,9 +113,9 @@ namespace Rover
     }
 
     public enum FacingDirection {
-        N,
-        S,
-        W,
-        E
+        North = 0,
+        East = 1,
+        South = 2,
+        West = 3
     }
 }
