@@ -28,7 +28,7 @@ namespace Rover
         public int Y { get; set; }
         public FacingDirection Direction { get; set; }
 
-        public Rover(int x = 0, int y = 0, FacingDirection d = FacingDirection.North)
+        public Rover(int x = 0, int y = 0, FacingDirection d = FacingDirection.NORTH)
         {
             X = x;
             Y = y;
@@ -113,9 +113,9 @@ namespace Rover
     }
 
     public enum FacingDirection {
-        North = 0,
-        East = 1,
-        South = 2,
-        West = 3
+        NORTH = 0,
+        EAST = 1,
+        SOUTH = 2,
+        WEST = 3
     }
 }
